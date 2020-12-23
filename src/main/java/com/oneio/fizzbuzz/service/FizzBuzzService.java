@@ -26,7 +26,7 @@ public class FizzBuzzService {
         this.numberTracker.reset();
     }
 
-    public String play(String userRequest)  {
+    public String play(String userRequest) {
 
         logger.debug("user requested :  " + userRequest);
 
@@ -57,5 +57,15 @@ public class FizzBuzzService {
         logger.debug(COMPUTER_ANSWERING + answer);
 
         return answer;
+    }
+
+    public String ask(String numbers) {
+        String[] split = numbers.split("-");
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String s : split) {
+            stringBuilder.append(s).append(":").append(getAnswer(Integer.parseInt(s))).append(" ");
+        }
+
+        return stringBuilder.toString();
     }
 }

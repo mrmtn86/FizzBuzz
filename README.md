@@ -48,15 +48,16 @@ You can learn correct answer for any number by using 'ask' operation
 
 ```http request
 
-http://localhost:8080/v1/fizz-buzz/ask/{number}
+http://localhost:8080/v1/fizz-buzz/ask/{number}-{number}-{number}
 
-http://localhost:8080/v1/fizz-buzz/ask/1980
+http://localhost:8080/v1/fizz-buzz/ask/1980-11-26-5
 
-answer: FizzBuzz
+answer: 1980:FizzBuzz 11:11 26:26 5:Buzz 
 
 ```
 
 To see all parameters and more info about api you can check http://localhost:8080/swagger-ui/ after you run it.
+
 
 ##Online Demo
 

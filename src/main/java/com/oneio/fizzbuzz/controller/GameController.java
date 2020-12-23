@@ -43,8 +43,9 @@ public class GameController {
 
     @Operation(summary = "returns correct value for given number")
     @Parameter(name = "answer", description = "number that you want to learn correct answer")
-    @GetMapping("/ask/{number}")
-    public ResponseEntity<TurnResultDto> correctAnswer(@PathVariable @Positive(message = "you can ask only positive numbers") int number) {
-        return new ResponseEntity<>(new TurnResultDto(FizzBuzzGuru.getAnswer(number)), HttpStatus.OK);
+    @GetMapping("/ask/{numbers}")
+    public ResponseEntity<TurnResultDto> correctAnswer(@PathVariable  String numbers) {
+        String askResult = fizzBuzzService.ask(numbers);
+        return new ResponseEntity<>(new TurnResultDto(askResult), HttpStatus.OK);
     }
 }
