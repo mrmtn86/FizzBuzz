@@ -85,4 +85,15 @@ class FizzBuzzServiceTest {
 
         assertThat(result).isEqualTo("5:Buzz 5:Buzz 6:Fizz 7:7 15:FizzBuzz 654:Fizz 654:Fizz ");
     }
+    @Test
+
+    void askReturnsValidValuesForSingleValue() {
+
+        FizzBuzzNumberTracker fizzBuzzNumberTracker = Mockito.mock(FizzBuzzNumberTracker.class);
+        FizzBuzzService fizzBuzzService =  new FizzBuzzService(fizzBuzzNumberTracker);
+
+        String result = fizzBuzzService.ask("5");
+
+        assertThat(result).isEqualTo("5:Buzz ");
+    }
 }

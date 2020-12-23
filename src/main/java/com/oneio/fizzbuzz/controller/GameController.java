@@ -41,8 +41,8 @@ public class GameController {
         return new ResponseEntity<>(new TurnResultDto(computerAnswer), HttpStatus.OK);
     }
 
-    @Operation(summary = "returns correct value for given number")
-    @Parameter(name = "answer", description = "number that you want to learn correct answer")
+    @Operation(summary = "returns correct value for given numbers")
+    @Parameter(name = "answer", description = "ypu can ask for multiple numbers with using '-' between them")
     @GetMapping("/ask/{numbers}")
     public ResponseEntity<TurnResultDto> correctAnswer(@PathVariable  String numbers) {
         String askResult = fizzBuzzService.ask(numbers);
