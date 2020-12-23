@@ -1,6 +1,5 @@
 package com.oneio.fizzbuzz.controller;
 
-import com.oneio.fizzbuzz.exception.FileOperationException;
 import com.oneio.fizzbuzz.model.TurnResultDto;
 import com.oneio.fizzbuzz.service.FizzBuzzService;
 import com.oneio.fizzbuzz.util.FizzBuzzGuru;
@@ -37,7 +36,7 @@ public class GameController {
     @GetMapping
     public ResponseEntity<TurnResultDto> play(@RequestParam
                                               @NotNull(message = "move can not be null")
-                                              @NotEmpty(message = "move can not be empty") String move) throws FileOperationException {
+                                              @NotEmpty(message = "move can not be empty") String move)  {
         String computerAnswer = fizzBuzzService.play(move);
         return new ResponseEntity<>(new TurnResultDto(computerAnswer), HttpStatus.OK);
     }

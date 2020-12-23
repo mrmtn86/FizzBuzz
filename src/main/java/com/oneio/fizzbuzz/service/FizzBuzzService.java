@@ -1,6 +1,5 @@
 package com.oneio.fizzbuzz.service;
 
-import com.oneio.fizzbuzz.exception.FileOperationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -22,12 +21,12 @@ public class FizzBuzzService {
     private static final Logger logger = LoggerFactory.getLogger(FizzBuzzService.class);
     private final FizzBuzzNumberTracker numberTracker;
 
-    public FizzBuzzService(FizzBuzzNumberTracker numberTracker) throws FileOperationException {
+    public FizzBuzzService(FizzBuzzNumberTracker numberTracker) {
         this.numberTracker = numberTracker;
         this.numberTracker.reset();
     }
 
-    public String play(String userRequest) throws FileOperationException {
+    public String play(String userRequest)  {
 
         logger.debug("user requested :  " + userRequest);
 

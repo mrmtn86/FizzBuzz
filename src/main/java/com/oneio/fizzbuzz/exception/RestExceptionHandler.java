@@ -50,13 +50,6 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
 
-    @ExceptionHandler({FileOperationException.class})
-    protected ResponseEntity<Object> handleInvalidSearchRequestException(FileOperationException ex) {
-        ApiError apiError = new ApiError(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage(), ex.getErrors());
-        return new ResponseEntity<>(apiError, apiError.getStatus());
-    }
-
-
     /**
      * handle request restriction errors
      */

@@ -1,6 +1,5 @@
 package com.oneio.fizzbuzz.service;
 
-import com.oneio.fizzbuzz.exception.FileOperationException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -17,7 +16,7 @@ class FizzBuzzServiceTest {
 
     @Test
     @DisplayName("play Should Return One When Computer Start Request Send")
-    void playShouldReturnOneWhenComputerStartRequestSend() throws FileOperationException {
+    void playShouldReturnOneWhenComputerStartRequestSend()  {
 
 
         FizzBuzzNumberTracker fizzBuzzNumberTracker = Mockito.mock(FizzBuzzNumberTracker.class);
@@ -33,7 +32,7 @@ class FizzBuzzServiceTest {
 
     @Test
     @DisplayName("play Should Return Two When User Send 1")
-    void playShouldReturnOneWhenUserSendOne() throws FileOperationException {
+    void playShouldReturnOneWhenUserSendOne()   {
 
         FizzBuzzNumberTracker fizzBuzzNumberTracker = Mockito.mock(FizzBuzzNumberTracker.class);
         when(fizzBuzzNumberTracker.next()).thenReturn(2);
@@ -48,7 +47,7 @@ class FizzBuzzServiceTest {
 
     @Test
     @DisplayName("play Should Return Fail Message When User Send Incorrect Answer")
-    void playShouldReturnFailMessageWhenUserSendIncorrectAnswer() throws FileOperationException {
+    void playShouldReturnFailMessageWhenUserSendIncorrectAnswer()   {
 
         FizzBuzzNumberTracker fizzBuzzNumberTracker = Mockito.mock(FizzBuzzNumberTracker.class);
         when(fizzBuzzNumberTracker.next()).thenReturn(3);
@@ -63,7 +62,7 @@ class FizzBuzzServiceTest {
 
     @Test
     @DisplayName("play Should Return Correct Answer When User Send Correct Answer")
-    void playShouldReturnCorrectAnswerWhenUserSendCorrectAnswer() throws FileOperationException {
+    void playShouldReturnCorrectAnswerWhenUserSendCorrectAnswer()   {
 
         FizzBuzzNumberTracker fizzBuzzNumberTracker = Mockito.mock(FizzBuzzNumberTracker.class);
         when(fizzBuzzNumberTracker.next()).thenReturn(6);

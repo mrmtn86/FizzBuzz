@@ -1,27 +1,26 @@
 package com.oneio.fizzbuzz.service;
 
-import com.oneio.fizzbuzz.dao.FizzBuzzRepository;
-import com.oneio.fizzbuzz.exception.FileOperationException;
+import com.oneio.fizzbuzz.dao.GameStateRepository;
+import com.oneio.fizzbuzz.model.GameStateEntity;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import static com.oneio.fizzbuzz.service.FizzBuzzNumberTracker.KEY;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
 class FizzBuzzNumberTrackerTest {
 
     @Test
     @DisplayName("start should set number to one")
-    void startShouldSetNumberToOne() throws FileOperationException {
-        FizzBuzzRepository fizzBuzzRepository = Mockito.mock(FizzBuzzRepository.class);
-        Mockito.doNothing().when(fizzBuzzRepository).setNumber(1);
-        FizzBuzzNumberTracker fizzBuzzNumberTracker = new FizzBuzzNumberTracker(fizzBuzzRepository);
-
+    void startShouldSetNumberToOne() {
+        GameStateRepository gameStateRepository = Mockito.mock(GameStateRepository.class);
+        when(gameStateRepository.findByKey(KEY)).thenReturn(new GameStateEntity());
+        FizzBuzzNumberTracker fizzBuzzNumberTracker = new FizzBuzzNumberTracker(gameStateRepository);
 
 
         int start = fizzBuzzNumberTracker.start();
-
 
 
         assertThat(start).isEqualTo(1);
@@ -30,33 +29,19 @@ class FizzBuzzNumberTrackerTest {
 
     @Test
     @DisplayName("next should return next number")
-    void next() throws FileOperationException {
-        FizzBuzzRepository fizzBuzzRepository = Mockito.mock(FizzBuzzRepository.class);
-        Mockito.doNothing().when(fizzBuzzRepository).setNumber(11);
-        Mockito.when(fizzBuzzRepository.getNumber()).thenReturn(10);
-        FizzBuzzNumberTracker fizzBuzzNumberTracker = new FizzBuzzNumberTracker(fizzBuzzRepository);
+    void next() {
+        GameStateRepository gameStateRepository = Mockito.mock(GameStateRepository.class);
 
+        GameStateEntity stateEntity = new GameStateEntity();
+        stateEntity.setValue(10);
+        when(gameStateRepository.findByKey(KEY)).thenReturn(stateEntity);
+        FizzBuzzNumberTracker fizzBuzzNumberTracker = new FizzBuzzNumberTracker(gameStateRepository);
 
 
         int next = fizzBuzzNumberTracker.next();
 
 
-
         assertThat(next).isEqualTo(11);
     }
 
-    @Test
-    @DisplayName("reset should set number to zero")
-    void reset() throws FileOperationException {
-        FizzBuzzRepository fizzBuzzRepository = Mockito.mock(FizzBuzzRepository.class);
-
-        //should call with zero this is test
-        Mockito.doNothing().when(fizzBuzzRepository).setNumber(0);
-
-        FizzBuzzNumberTracker fizzBuzzNumberTracker = new FizzBuzzNumberTracker(fizzBuzzRepository);
-
-
-         fizzBuzzNumberTracker.reset();
-
-    }
 }
