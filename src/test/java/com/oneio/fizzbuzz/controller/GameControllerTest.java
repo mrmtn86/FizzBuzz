@@ -64,8 +64,8 @@ class GameControllerTest {
 
     @Test
     void correctAnswerShouldReturnCorrectAnswerForRequestedNumber() throws Exception {
-        mockMvc.perform(get(V_1_FIZZ_BUZZ+"/ask/15"))
+        mockMvc.perform(get(V_1_FIZZ_BUZZ+"/ask/15-26-61-54"))
                 .andDo(print())
-                .andExpect(jsonPath(ANSWER, equalTo(FizzBuzzGuru.FIZZBUZZ)));
+                .andExpect(jsonPath(ANSWER, equalTo("15:FizzBuzz 26:26 61:61 54:Fizz ")));
     }
 }
